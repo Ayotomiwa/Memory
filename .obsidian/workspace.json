@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "2be19500dfa633fd",
+    "type": "split",
+    "children": [
+      {
+        "id": "eb714cb68d143189",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0de8c0b864ffe371",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "461ca132a36b0c96",
+    "type": "split",
+    "children": [
+      {
+        "id": "da9dd6f42bf49ced",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7d85d92902af5aa3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8a3cc1984c9fad5f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "9490c70a306a7535",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9c39fa7187bd6997",
+    "type": "split",
+    "children": [
+      {
+        "id": "2255e27fbcecc718",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9dcb1525fbc98fee",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "0d91422373867fd3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "6341cb44a768398d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "026f3bb24573b4e7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "11b2ce3cab647cb5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "0de8c0b864ffe371",
+  "lastOpenFiles": [
+    "atlas/repos/_example-service.md",
+    "atlas/standards/event-contracts.md",
+    "atlas/repo-map/usage-summaries.md",
+    "atlas/repos/data-platform-pylib.md",
+    "atlas/repo-map/shared-libraries.md",
+    "atlas/repo-map/dependency-map.md",
+    "claude-assets/prompts/impact-analysis-for-event-change.md",
+    "claude-assets/prompts/generate-aws-test-plan.md",
+    "claude-assets/prompts/plan-change-with-central-context.md",
+    "claude-assets/prompts",
+    "CLAUDE.md",
+    "atlas/repos/_archived/_archive-guide.md",
+    "staging/prompts/_template.md",
+    "staging/prompts/README.md",
+    "staging/prompts",
+    "atlas/repos/quality-checks-lambda.md",
+    "atlas/repos/_archived",
+    "atlas/events/data.raw.landed.md",
+    "atlas/events/data.quality.validated.md",
+    "atlas/events/data.quality.rejected.md",
+    "atlas/events/data.curated.published.md",
+    "atlas/events",
+    "index.md",
+    "atlas/repos/example-service.md",
+    "atlas/repos/analytics-api.md",
+    "atlas/standards/cloudformation.md",
+    "atlas/repos/_page-template.md",
+    "atlas/repo-guides/local-claude-md.md",
+    "atlas/repo-guides/cloudformation-repo.md",
+    "atlas/repo-guides/java-library.md",
+    "atlas/repo-guides",
+    "atlas/types/local-claude-md.md.tmp.21196.1777230441142",
+    "onboarding",
+    "atlas/repo-types",
+    "staging/skills",
+    "atlas/types/java-library.md.tmp.21196.1777217839030"
+  ]
+}
