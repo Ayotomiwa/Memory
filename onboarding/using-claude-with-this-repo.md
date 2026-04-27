@@ -1,6 +1,32 @@
 # Using Claude with the central context
 
-Related: [[CLAUDE]], [[new-developer-start-here]]
+Related: [CLAUDE](../CLAUDE.md), [new-developer-start-here](new-developer-start-here.md)
+
+## Decision tree
+
+### Repo has no local `CLAUDE.md` yet and is not onboarded
+1. Start Claude with the central context attached:
+   ```bash
+   claude --add-dir ~/company/engineering-context
+   ```
+2. Ask Claude to create a local `CLAUDE.md` from [local-claude-md](../claude-assets/repo-guides/local-claude-md.md).
+3. Claude reads the repo, infers commands and type, and asks you to confirm the type and any consumed events before writing the file.
+4. After that, the repo uses its new local `CLAUDE.md` plus the central context.
+
+### Repo already has a local `CLAUDE.md`
+1. Start Claude with `--add-dir ~/company/engineering-context`.
+2. Claude reads the local `CLAUDE.md`, the repo guide, and the repo page if it exists.
+3. Use Claude normally for tasks.
+4. If shared-library usage, event fields, or internal endpoints change, update the local `CLAUDE.md` in the same MR.
+
+### Repo has no local `CLAUDE.md` but is already onboarded here
+1. Start Claude with `--add-dir ~/company/engineering-context`.
+2. Create the local `CLAUDE.md` from [local-claude-md](../claude-assets/repo-guides/local-claude-md.md).
+3. Point `Repo page:` at the existing atlas page:
+   ```md
+   Repo page: atlas/repos/<repo-name>.md
+   ```
+4. Claude can then use the atlas page immediately, along with the type guide and local code.
 
 ## New repo - no local CLAUDE.md yet
 
@@ -15,10 +41,8 @@ Then ask Claude to create the local `CLAUDE.md`:
 
 ```
 Create a local CLAUDE.md for this repo using the template at
-atlas/repo-guides/local-claude-md.md.
+claude-assets/repo-guides/local-claude-md.md.
 Read the repo's build and dependency files to infer commands and type.
-Cross-reference atlas/repo-map/shared-libraries.md to identify which
-team-owned libraries are already declared as dependencies.
 Ask me to confirm the type and any consumed events before writing the file.
 ```
 
@@ -58,18 +82,17 @@ Claude will route via the local `CLAUDE.md`, the repo's page in `atlas/repos/` i
 ### Impact analysis
 > What else is affected if I change the `data.quality.validated` event schema?
 
-Claude should read [[dependency-map]], [[event-contracts]], and the pages for producers/consumers of that event.
-Precision depends on current consumer `Dependencies and usage` coverage in local `CLAUDE.md` files and [[usage-summaries]]. Without that coverage, expect a candidate set rather than a definitive break list.
+Claude should read [dependency-map](../atlas/dependency-map.md) and [event-contracts](../atlas/standards/event-contracts.md), then the pages for producers/consumers of that event.
 
 ### AWS test plan
 > Produce an AWS test plan for this change based on our aws-testing standard.
 
-Claude reads [[aws-testing]], the repo's "AWS context" section, and the relevant flow page.
+Claude reads [aws-testing](../atlas/standards/aws-testing.md), the repo's "AWS context" section, and the relevant flow page.
 
 ### Runbook execution
 > Walk me through debugging this Lambda error using the team's runbook.
 
-Claude follows [[lambda-failure-debugging]] step by step.
+Claude follows [lambda-failure-debugging](../atlas/runbooks/lambda-failure-debugging.md) step by step.
 
 ### After the task - capture learnings
 > Capture durable learnings from this task into the right staging folder.
@@ -97,7 +120,7 @@ Review the diff carefully. Durable edits are long-lived; staging notes are cheap
 - Duplicate content across atlas pages.
 - Write directly to `atlas/`, `.claude/skills/`, or `claude-assets/` without a staging entry.
 
-If Claude does any of these, redirect it to [[CLAUDE]].
+If Claude does any of these, redirect it to [CLAUDE](../CLAUDE.md).
 
 ## In a future monorepo
 

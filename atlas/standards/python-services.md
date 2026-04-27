@@ -2,7 +2,7 @@
 
 Conventions for Python services and Lambdas owned by this team.
 
-Related: [[aws-lambda]], [[event-contracts]], [[observability]], [[aws-testing]]
+Related: [aws-lambda](aws-lambda.md), [event-contracts](event-contracts.md), [aws-testing](aws-testing.md)
 
 ## Packaging and tooling
 
@@ -18,30 +18,29 @@ Related: [[aws-lambda]], [[event-contracts]], [[observability]], [[aws-testing]]
 
 ## Events
 
-- Event schemas are defined in a shared Python library (tracked in [[shared-libraries]]), matching the Java contracts.
+- Event schemas are defined in a shared Python library (tracked in [dependency-map](../dependency-map.md)), matching the Java contracts.
 - Validate with `pydantic` or equivalent at the boundary.
-- Any event contract change must follow [[event-contracts]] rules.
+- Any event contract change must follow [event-contracts](event-contracts.md) rules.
 
-## Observability
+## Logging and metrics
 
-- Use the shared observability library.
+- Use the shared logging/metrics library.
 - Structured JSON logging by default; never `print`.
-- See [[observability]].
 
 ## Testing
 
 - `pytest` is the standard runner.
-- Integration tests use real dependencies (LocalStack, Docker DB) where practical — see [[aws-testing]] for AWS-specific expectations.
+- Integration tests use real dependencies (LocalStack, Docker DB) where practical — see [aws-testing](aws-testing.md) for AWS-specific expectations.
 - Do not mock AWS SDK calls in tests that exist to verify AWS behavior.
 
 ## Lambdas
 
-- Python Lambdas follow the same rules as services, plus [[aws-lambda]].
+- Python Lambdas follow the same rules as services, plus [aws-lambda](aws-lambda.md).
 - Handler module and function are named consistently across repos; the local `CLAUDE.md` records the pattern.
 
 ## Ownership
 
-See [[ownership]].
+See the repo page.
 
 ## Starter sources
 

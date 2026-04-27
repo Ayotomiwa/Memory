@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "eb714cb68d143189",
+        "id": "44c0084f60f8fd48",
         "type": "tabs",
         "children": [
           {
-            "id": "0de8c0b864ffe371",
+            "id": "a74fb97c77cf67bb",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "atlas/dependency-map.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "dependency-map"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "onboarding/maintaining-the-atlas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for maintaining-the-atlas"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "onboarding/maintaining-the-atlas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from maintaining-the-atlas"
             }
           },
           {
@@ -150,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "onboarding/maintaining-the-atlas.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of maintaining-the-atlas"
             }
           }
         ]
@@ -176,43 +183,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "0de8c0b864ffe371",
+  "active": "a74fb97c77cf67bb",
   "lastOpenFiles": [
-    "atlas/repos/_example-service.md",
-    "atlas/standards/event-contracts.md",
-    "atlas/repo-map/usage-summaries.md",
-    "atlas/repos/data-platform-pylib.md",
-    "atlas/repo-map/shared-libraries.md",
-    "atlas/repo-map/dependency-map.md",
-    "claude-assets/prompts/impact-analysis-for-event-change.md",
-    "claude-assets/prompts/generate-aws-test-plan.md",
-    "claude-assets/prompts/plan-change-with-central-context.md",
-    "claude-assets/prompts",
+    "atlas/flows/dataset-query-flow.md",
+    "atlas/repos/dl-quality-checks-lambda.md",
+    "atlas/repos/dl-ingestion-lambdas.md",
+    "atlas/repos/datalake-cfn.md",
+    "atlas/repos/data-lib-events.md",
+    "atlas/flows/event-schema-rollout-flow.md",
+    "atlas/flows/quality-rejection-flow.md",
+    "atlas/flows/vendor-onboarding-flow.md",
+    "atlas/repos/data-lib-platform-pylib.md",
     "CLAUDE.md",
-    "atlas/repos/_archived/_archive-guide.md",
-    "staging/prompts/_template.md",
-    "staging/prompts/README.md",
-    "staging/prompts",
     "atlas/repos/quality-checks-lambda.md",
-    "atlas/repos/_archived",
-    "atlas/events/data.raw.landed.md",
-    "atlas/events/data.quality.validated.md",
-    "atlas/events/data.quality.rejected.md",
-    "atlas/events/data.curated.published.md",
-    "atlas/events",
     "index.md",
-    "atlas/repos/example-service.md",
-    "atlas/repos/analytics-api.md",
-    "atlas/standards/cloudformation.md",
+    "atlas/repos/curated-etl-glue.md",
     "atlas/repos/_page-template.md",
-    "atlas/repo-guides/local-claude-md.md",
-    "atlas/repo-guides/cloudformation-repo.md",
-    "atlas/repo-guides/java-library.md",
-    "atlas/repo-guides",
-    "atlas/types/local-claude-md.md.tmp.21196.1777230441142",
-    "onboarding",
-    "atlas/repo-types",
-    "staging/skills",
-    "atlas/types/java-library.md.tmp.21196.1777217839030"
+    "atlas/repos/_repo-template.md",
+    "atlas/repos/_example-service.md",
+    "atlas/repos/data-events.md",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "2026-04-27.md",
+    "atlas/repo-catalog.md",
+    "atlas/dependency-map.md",
+    "atlas/standards/python-services.md",
+    "atlas/standards/observability.md",
+    "atlas/standards/event-contracts.md",
+    "atlas/standards/cloudformation.md",
+    "atlas/standards/aws-lambda.md",
+    "atlas/runbooks/lambda-failure-debugging.md",
+    "atlas/repos/sedLWvTws",
+    "atlas/repos/sed18cl08",
+    "atlas/repos/sedqP4wCj",
+    "atlas/repos/sedgbA9n6",
+    "atlas/repos/sed2PQbkN",
+    "atlas/repos/sedtbepV3",
+    "atlas/standards/sedrl3APz",
+    "atlas/standards/sedtud31l",
+    "atlas/standards/sedvKKudN",
+    "atlas/onboarding"
   ]
 }

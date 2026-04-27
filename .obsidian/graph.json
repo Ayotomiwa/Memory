@@ -1,14 +1,57 @@
 {
-  "collapse-filter": true,
-  "search": "",
+  "collapse-filter": false,
+  "search": "(path:atlas/repos OR path:atlas/flows) -path:atlas/repos/_repo-template -path:atlas/repos/_archived -path:atlas/flows/flows-guide",
   "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": false,
-  "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
+  "hideUnresolved": true,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:atlas/repos/dl-ingestion-lambdas OR path:atlas/repos/dl-quality-checks-lambda OR path:atlas/repos/curated-etl-glue OR path:atlas/repos/lineage-service OR path:atlas/repos/analytics-api",
+      "color": {
+        "a": 1,
+        "rgb": 3447003
+      }
+    },
+    {
+      "query": "path:atlas/repos/data-lib-events OR path:atlas/repos/data-lib-platform-pylib",
+      "color": {
+        "a": 1,
+        "rgb": 1146986
+      }
+    },
+    {
+      "query": "path:atlas/repos/datalake-cfn",
+      "color": {
+        "a": 1,
+        "rgb": 15105570
+      }
+    },
+    {
+      "query": "path:atlas/flows",
+      "color": {
+        "a": 1,
+        "rgb": 10040012
+      }
+    },
+    {
+      "query": "path:atlas/runbooks",
+      "color": {
+        "a": 1,
+        "rgb": 15844367
+      }
+    },
+    {
+      "query": "path:atlas/standards",
+      "color": {
+        "a": 1,
+        "rgb": 9807270
+      }
+    }
+  ],
   "collapse-display": true,
-  "showArrow": false,
+  "showArrow": true,
   "textFadeMultiplier": 0,
   "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
@@ -17,6 +60,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 1.2146000941720236,
-  "close": false
+  "scale": 1.7250367204334525,
+  "close": true
 }

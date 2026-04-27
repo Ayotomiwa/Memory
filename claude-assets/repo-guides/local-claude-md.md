@@ -1,14 +1,14 @@
 # Local CLAUDE.md - template
 
-Related: [[CLAUDE]], [[using-claude-with-this-repo]]
+Related: [CLAUDE](../../CLAUDE.md), [using-claude-with-this-repo](../../onboarding/using-claude-with-this-repo.md)
 
 Available types:
-- `atlas/repo-guides/python-lambda.md`
-- `atlas/repo-guides/java-service.md`
-- `atlas/repo-guides/glue-job.md`
-- `atlas/repo-guides/python-library.md`
-- `atlas/repo-guides/java-library.md`
-- `atlas/repo-guides/cloudformation-repo.md`
+- `claude-assets/repo-guides/python-lambda.md`
+- `claude-assets/repo-guides/java-service.md`
+- `claude-assets/repo-guides/glue-job.md`
+- `claude-assets/repo-guides/python-library.md`
+- `claude-assets/repo-guides/java-library.md`
+- `claude-assets/repo-guides/cloudformation-repo.md`
 
 ---
 
@@ -22,7 +22,7 @@ Available types:
 
 ## Central context
 Path: ~/company/engineering-context
-Type: atlas/repo-guides/<type>.md
+Type: claude-assets/repo-guides/<type>.md
 Repo page: atlas/repos/<repo-name>.md
 
 ## Required startup routing
@@ -31,7 +31,7 @@ Before planning or editing:
 2. Read the repo guide listed in `Type`.
 3. Read the repo page listed in `Repo page`, if it exists.
 4. If `Repo page` says `not yet compiled` or the file does not exist, continue using the type guide and local code only.
-5. For cross-repo changes, read `atlas/repo-map/dependency-map.md` before editing.
+5. For cross-repo changes, read `atlas/dependency-map.md` before editing.
 
 ## Dependencies and usage
 
@@ -61,7 +61,7 @@ Before planning or editing:
 **Required startup routing** - include this section verbatim in every generated local `CLAUDE.md`. It is the reliable bootstrap path because the central `CLAUDE.md` is not automatically loaded as project instructions when attached with `--add-dir`.
 
 **Dependencies and usage:**
-- Record every team-owned shared library used (see [[shared-libraries]])
+- Record every team-owned shared library used (see [dependency-map](../../atlas/dependency-map.md))
 - Record every event consumed with the fields actually read
 - Record every internal HTTP/gRPC endpoint called
 - Do not record third-party libraries or transitive dependencies

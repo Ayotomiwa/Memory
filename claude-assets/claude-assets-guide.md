@@ -1,6 +1,6 @@
 # Claude assets - maintainer guide
 
-Related: [[skills-catalog]], [[prompts-catalog]]
+Related: [skills-catalog](skills-catalog.md), [prompts-catalog](prompts-catalog.md)
 
 ---
 

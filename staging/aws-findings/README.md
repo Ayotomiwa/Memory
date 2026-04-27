@@ -46,4 +46,4 @@ If any.
 - `atlas/standards/aws-testing.md`
 - `atlas/runbooks/*.md`
 - `atlas/repos/<repo>.md` — under "AWS context" or "Known gotchas"
-- `atlas/repo-map/aws-resources.md`
+- `repo page AWS context sections`

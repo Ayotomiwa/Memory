@@ -1,1 +1,8 @@
-{}
+{
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": false,
+  "showLineNumber": true,
+  "livePreview": true,
+  "useMarkdownLinks": true,
+  "defaultViewMode": "preview"
+}

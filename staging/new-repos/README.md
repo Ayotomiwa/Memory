@@ -14,10 +14,10 @@ The local `CLAUDE.md` in the repo may already exist before this entry is created
 
 ## After the lead compiles it
 
-1. `atlas/repos/<repo>.md` created from [[_example-service]]
-2. Repo added to [[repo-catalog]]
-3. Connections added to [[dependency-map]]
-4. [[shared-libraries]], [[aws-resources]], [[ownership]] updated as needed
+1. `atlas/repos/<repo>.md` created from [_repo-template](../../atlas/repos/_repo-template.md)
+2. Repo added to [repo-catalog](../../atlas/repo-catalog.md)
+3. Connections added to [dependency-map](../../atlas/dependency-map.md)
+4. Repo ownership, AWS context, and shared-library edges captured in the repo page and [dependency-map](../../atlas/dependency-map.md) as needed
 5. Entry logged in `log.md`
 6. This staging file stays as audit trail
 

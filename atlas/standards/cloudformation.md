@@ -2,7 +2,7 @@
 
 Conventions for CloudFormation templates and stacks.
 
-Related: [[aws-lambda]], [[aws-testing]], [[cloudformation-rollback]], [[aws-resources]]
+Related: [aws-lambda](aws-lambda.md), [aws-testing](aws-testing.md)
 
 ## Template layout
 
@@ -29,9 +29,10 @@ High-risk resource types to double-check: RDS, DynamoDB table keys, Lambda funct
 
 Updating a Lambda's env vars triggers a function update. For zero-downtime flows, make sure the new env value is compatible with both the old and new code versions during the rolling update. See `staging/aws-findings/` for team-specific cases as they accrue.
 
-## Rollback
+## Failed deploys and rollback
 
-- Every stack update must have a plan for failure. See [[cloudformation-rollback]].
+- Prod rollback is owned by the Run the Bank team. If a prod stack update fails or needs rollback, stop changing the stack and escalate with the stack name, environment, failed resource, last stack event, and MR/deploy identifier.
+- For `dev` and other team-owned environments, prefer fix-forward or revert through the normal MR/deploy path unless the owning team explicitly approves a rollback.
 - Watch stack events during deploy; do not merge the MR until the stack reaches `UPDATE_COMPLETE` (or `CREATE_COMPLETE`) in all target environments.
 
 ## Drift
@@ -41,7 +42,7 @@ Updating a Lambda's env vars triggers a function update. For zero-downtime flows
 
 ## Testing
 
-See [[aws-testing]] for runtime validation steps after a stack update.
+See [aws-testing](aws-testing.md) for runtime validation steps after a stack update.
 
 ## Starter sources
 

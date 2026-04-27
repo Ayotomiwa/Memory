@@ -10,7 +10,7 @@ Use this when a decision is forming but not yet ready to live in `atlas/decision
 ---
 date: YYYY-MM-DD
 status: <draft | proposed | decided | rejected>
-area: <e.g., events, infra, observability>
+area: <e.g., events, infra, runtime>
 ---
 
 # <decision title>

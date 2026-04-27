@@ -9,14 +9,13 @@
 
 An export change breaks every stack that imports it:
 
-- atlas/repo-map/dependency-map.md — identify all stacks consuming this export
-- atlas/runbooks/cloudformation-rollback.md — know the rollback path before deploying
+- atlas/dependency-map.md — identify all stacks consuming this export
 
 Pattern: add new export alongside old (parallel), migrate consumers, remove old. Never rename or remove an export that has active importers.
 
-## Runbooks
+## Escalation
 
-- atlas/runbooks/cloudformation-rollback.md
+- For prod rollback, escalate to Run the Bank with stack name, environment, failed resource, last stack event, and MR/deploy identifier.
 
 ## Relevant skills
 
@@ -24,7 +23,3 @@ Pattern: add new export alongside old (parallel), migrate consumers, remove old.
 - `/repo-impact` — list stacks affected before changing an export value
 
 Full catalog: `claude-assets/skills-catalog.md`
-
-## Related
-
-[[cloudformation]] | [[aws-testing]] | [[dependency-map]] | [[cloudformation-rollback]] | [[datalake-cfn]]

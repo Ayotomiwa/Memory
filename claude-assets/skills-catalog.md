@@ -2,7 +2,7 @@
 
 Team skills live in `.claude/skills/` and are auto-loaded via `--add-dir`. Invoke as `/skill-name`.
 
-For adding or approving skills: [[claude-assets-guide]].
+For adding or approving skills: [claude-assets-guide](claude-assets-guide.md).
 
 ---
 
@@ -12,7 +12,7 @@ For adding or approving skills: [[claude-assets-guide]].
 |---|---|---|
 | `/ingest-staging` | Curate a staging file into the appropriate durable layer and update `log.md` | After dropping a raw note or proposal into `staging/`; same-day for high-impact items |
 | `/weekly-lint` | Full weekly pass - triage staging files, scan curated layers for outdated or broken content, review skill and prompt proposals modified since the last lint | Once a week by the curated-layer maintainer |
-| `/new-repo-compile` | Compile a `staging/new-repos/` entry into repo pages and repo-map pages, then remind the developer to update their local CLAUDE.md pointer | When a new repo staging entry is ready to promote |
+| `/new-repo-compile` | Compile a `staging/new-repos/` entry into `atlas/repos/`, `repo-catalog`, and `dependency-map`, then remind the developer to update their local CLAUDE.md pointer | When a new repo staging entry is ready to promote |
 
 ## Development
 

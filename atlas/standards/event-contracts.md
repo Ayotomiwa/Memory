@@ -2,15 +2,15 @@
 
 How events are defined, versioned, produced, and consumed.
 
-Related: [[shared-libraries]], [[dependency-map]], [[java-services]], [[python-services]], [[aws-testing]]
+Related: [dependency-map](../dependency-map.md), [java-services](java-services.md), [python-services](python-services.md), [aws-testing](aws-testing.md)
 
 ## Where events live
 
-- Java and Python schemas live in [[data-events]].
+- Java and Python schemas live in [data-lib-events](../repos/data-lib-events.md).
 
 Do not hand-roll event JSON in a service. Use the shared library types.
 
-Event names and dependencies are documented inline in repo pages, flow pages, and [[dependency-map]]. Do not create standalone per-event atlas pages.
+Event names and dependencies are documented inline in repo pages, flow pages, and [dependency-map](../dependency-map.md). Do not create standalone per-event atlas pages.
 
 ## Naming
 
@@ -31,7 +31,7 @@ Breaking changes (not safe):
 For breaking changes:
 
 1. Introduce the new schema as a new version (parallel), do not mutate the old.
-2. Update all consumers listed in [[dependency-map]] to handle both versions.
+2. Update all consumers listed in [dependency-map](../dependency-map.md) to handle both versions.
 3. Cut producers over to the new version.
 4. Remove the old version only after every consumer has been confirmed migrated.
 
@@ -48,7 +48,7 @@ For breaking changes:
 
 ## Testing contract changes
 
-See [[aws-testing]] - validate against all downstream consumers in `dev` before merging to `prod`.
+See [aws-testing](aws-testing.md) - validate against all downstream consumers in `dev` before merging to `prod`.
 
 ## Starter sources
 

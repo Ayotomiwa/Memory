@@ -2,7 +2,7 @@
 
 Weekly pass run by the lead using Claude Code. This pass covers every curated layer fed by `staging/`: `atlas/`, `.claude/skills/`, and `claude-assets/`.
 
-Related: [[CLAUDE]], [[log]]
+Related: [CLAUDE](../CLAUDE.md), [log](../log.md)
 
 ---
 
@@ -21,8 +21,7 @@ Related: [[CLAUDE]], [[log]]
 Read `log.md`. Find the date of the last `lint` entry.
 
 ### 2. List new staging entries
-List files added or modified in `staging/` since that date, subfolder by subfolder:
-`new-repos/`, `deprecations/`, `mr-summaries/`, `repo-findings/`, `incidents/`, `debugging-notes/`, `aws-findings/`, `confluence/`, `meeting-notes/`, `decisions/`, `architecture-notes/`, `chat-discussions/`, `skills/`, `prompts/`
+List files added or modified in `staging/` since that date, subfolder by subfolder.
 
 ### 3. Triage
 For each non-skill and non-prompt file:
@@ -30,7 +29,7 @@ For each non-skill and non-prompt file:
 - **Defer** - unconfirmed or too rough; revisit next week
 - **Discard** - redundant or not worth curating now; do not compile, and note the decision in `log.md` (raw file stays in `staging/` as audit trail)
 
-File deferred three weeks running: ingest or discard, do not defer again. ("Discard" still means no compilation; do not delete the staging file.)
+File deferred three weeks running: ingest or discard, do not defer again.
 
 For each file under `staging/skills/`:
 - Classify it as **Duplicate**, **Overlap**, **Contradiction**, or **New**
@@ -43,39 +42,33 @@ For each file under `staging/prompts/`:
 - Do not ingest prompt proposals into `atlas/`
 
 ### 4. Compile ingests
-Follow curation rules in [[CLAUDE]]: read file -> identify the durable destination -> update in place -> add wikilinks or catalog entries -> flag contradictions.
+Follow curation rules in [CLAUDE](../CLAUDE.md): read file -> identify the durable destination -> update in place -> flag contradictions.
 
 **`staging/new-repos/` entry:**
-1. Create `atlas/repos/<repo>.md` from [[_example-service]].
-2. Add to [[repo-catalog]].
-3. Add edges to [[dependency-map]].
-4. Update [[shared-libraries]], [[aws-resources]], [[ownership]] as needed.
+1. Create `atlas/repos/<repo>.md` from [_repo-template](../atlas/repos/_repo-template.md).
+2. Add to [repo-catalog](../atlas/repo-catalog.md).
+3. Add edges to [dependency-map](../atlas/dependency-map.md).
 
 **`staging/deprecations/` entry:**
-1. Mark deprecated in [[repo-catalog]].
-2. Remove/update edges in [[dependency-map]].
+1. Mark deprecated in [repo-catalog](../atlas/repo-catalog.md).
+2. Remove/update edges in [dependency-map](../atlas/dependency-map.md).
 3. Move `atlas/repos/<repo>.md` to `atlas/repos/_archived/<repo>.md`.
-4. Update pages that wikilink to it.
+4. Update pages that link to it.
 
 **`staging/skills/` entry:**
 During the weekly pass, classify each proposal and output a recommendation. Human approval is required before any skill is promoted to `.claude/skills/`.
 
 **`staging/prompts/` entry:**
-During the weekly pass, classify each proposal and output a recommendation. Human approval is required before any prompt is promoted to `claude-assets/prompts/` and added to [[prompts-catalog]].
+During the weekly pass, classify each proposal and output a recommendation. Human approval is required before any prompt is promoted to `claude-assets/prompts/` and added to [prompts-catalog](../claude-assets/prompts-catalog.md).
 
 ### 5. Curated layer health scan
 - Duplicates - merge into canonical page
 - Orphan pages (no inbound links) - add a link or flag for removal
 - Outdated pages (dead repos/services) - update or archive
-- Broken wikilinks - fix
+- Broken links - fix
 - Missing catalog targets - flag any `skills-catalog` or `prompts-catalog` entry whose source file does not exist
 
-### 6. Update usage-summaries
-If any consumer repos updated their local `CLAUDE.md` `Dependencies and usage` sections, update [[usage-summaries]]. If repos are accessible via `--add-dir`, ask Claude to collect and update in one pass.
-
-Until that coverage exists, treat missing rows in [[usage-summaries]] as unknown usage, not proof that a consumer is unaffected.
-
-### 7. Log
+### 6. Log
 ```
 ## [YYYY-MM-DD] lint | <one-line summary>
 - Files ingested: N

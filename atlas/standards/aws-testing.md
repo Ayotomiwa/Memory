@@ -2,7 +2,7 @@
 
 How we validate AWS/runtime changes before and after deployment.
 
-Related: [[aws-lambda]], [[cloudformation]], [[observability]], [[lambda-failure-debugging]]
+Related: [aws-lambda](aws-lambda.md), [cloudformation](cloudformation.md), [lambda-failure-debugging](../runbooks/lambda-failure-debugging.md)
 
 ## Principle
 
@@ -37,11 +37,11 @@ Abort and roll back if any of:
 - Stack enters `UPDATE_ROLLBACK_IN_PROGRESS`.
 - Business metric degrades.
 
-See [[cloudformation-rollback]] for the rollback playbook.
+Prod rollback is handled by the Run the Bank team. Escalate with the failing symptom, affected environment, deploy/MR identifier, and relevant CloudWatch or stack events.
 
 ## Event contract changes
 
-If the change affects an event schema, **every downstream consumer** listed in [[dependency-map]] must be validated in `dev` before merging to `prod`. See [[event-contracts]].
+If the change affects an event schema, **every downstream consumer** listed in [dependency-map](../dependency-map.md) must be validated in `dev` before merging to `prod`. See [event-contracts](event-contracts.md).
 
 ## Test plans
 

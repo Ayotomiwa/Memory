@@ -12,23 +12,23 @@ Java service that consumes every data-platform event (`data.raw.landed`, `data.q
 
 ## Responsibilities
 
-- Subscribe to the `data-events-bus` and persist each event into the lineage store.
+- Subscribe to the `data-lib-events-bus` and persist each event into the lineage store.
 - Build graph edges linking raw → curated records across jobs.
 - Serve lineage queries via HTTP: "where did curated row X come from?", "what downstream tables depend on raw batch Y?".
 
 ## Connections
 
 ### Upstream
-- EventBridge bus `data-events-bus` (owned by [[datalake-cfn]])
-- Publishers: [[ingestion-lambdas]], [[quality-checks-lambda]], [[curated-etl-glue]]
+- EventBridge bus `data-lib-events-bus` (owned by [datalake-cfn](datalake-cfn.md))
+- Publishers: [dl-ingestion-lambdas](dl-ingestion-lambdas.md), [dl-quality-checks-lambda](dl-quality-checks-lambda.md), [curated-etl-glue](curated-etl-glue.md)
 
 ### Downstream
-- [[analytics-api]] — calls lineage API for curated table provenance
+- [analytics-api](analytics-api.md) — calls lineage API for curated table provenance
 - BI / analyst tools — via HTTP API
 
 ### Shared libraries
-- [[data-events]]
-- Shared Java observability library
+- [data-lib-events](data-lib-events.md)
+- Shared Java logging/metrics library
 
 ## Events / APIs
 
@@ -56,7 +56,7 @@ Java service that consumes every data-platform event (`data.raw.landed`, `data.q
   - `lineage-dlq-growth`
   - `lineage-api-5xx`
 
-Cross-reference: [[aws-resources]].
+Cross-reference: `AWS context`.
 
 ## Known gotchas
 
@@ -66,10 +66,9 @@ Cross-reference: [[aws-resources]].
 
 ## Related docs
 
-- Flows: [[raw-to-curated-flow]]
-- Standards: [[java-services]], [[event-contracts]], [[observability]]
-- Runbooks: [[sqs-backlog-debugging]]
-- Concepts: [[idempotency]]
+- Flows: [raw-to-curated-flow](../flows/raw-to-curated-flow.md), [quality-rejection-flow](../flows/quality-rejection-flow.md), [dataset-query-flow](../flows/dataset-query-flow.md)
+- Standards: [java-services](../standards/java-services.md), [event-contracts](../standards/event-contracts.md), logging/metrics expectations
+- Runbooks: [sqs-backlog-debugging](../runbooks/sqs-backlog-debugging.md)
 
 ## Claude routing
 
@@ -77,8 +76,8 @@ The local `CLAUDE.md` type template (`java-service`) covers mandatory pre-task r
 
 If touching event handling:
 - atlas/standards/event-contracts.md
-- atlas/repos/data-events.md
-- atlas/concepts/idempotency.md
+- atlas/repos/data-lib-events.md
+- atlas/standards/aws-lambda.md
 
 If touching the Postgres schema (Liquibase migrations):
 - Verify migration state matches between `dev` and `prod` before deploying — schema drift is a known gotcha for this repo.
@@ -87,4 +86,4 @@ If touching the Postgres schema (Liquibase migrations):
 
 - Local: `./gradlew check`
 - Pre-merge: deploy to `dev`, replay a known raw batch, confirm lineage API returns the expected graph.
-- Post-merge: see [[aws-testing]] plus the service-specific alarms above.
+- Post-merge: see [aws-testing](../standards/aws-testing.md) plus the service-specific alarms above.

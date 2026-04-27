@@ -43,4 +43,4 @@ What was changed, with file paths or MR link.
 - `atlas/runbooks/*.md` — if the investigation can be turned into a playbook
 - `atlas/repos/<repo>.md` — under "Known gotchas"
 - `atlas/standards/*.md` — if it reveals a missing rule
-- `atlas/concepts/*.md` — if it teaches a subtle technical concept
+- the relevant `atlas/standards/*.md` page — if it teaches a subtle technical pattern

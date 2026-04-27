@@ -1,4 +1,4 @@
-# data-platform-pylib
+# data-lib-platform-pylib
 
 ## Summary
 
@@ -8,34 +8,34 @@ Shared Python library used by every data-engineering Python runtime in the team:
 
 - **Type**: Python library (wheel published to internal PyPI)
 - **Language / tooling**: Python 3.11+ / `uv` / `pytest`
-- **Repo URL**: `gitlab.company.internal/data/data-platform-pylib`
+- **Repo URL**: `gitlab.company.internal/data/data-lib-platform-pylib`
 
 ## Responsibilities
 
 - Structured logging + correlation ID propagation.
 - S3 helpers (partition-aware paths, safe writes, presigned URL generation).
 - Secrets resolution (Secrets Manager / Parameter Store, with caching).
-- Event publish/consume helpers (EventBridge + SQS) that use [[data-events]] schemas.
+- Event publish/consume helpers (EventBridge + SQS) that use [data-lib-events](data-lib-events.md) schemas.
 - Retry / backoff policies tuned for data-platform workloads.
-- Great Expectations wrapper used by [[quality-checks-lambda]].
+- Great Expectations wrapper used by [dl-quality-checks-lambda](dl-quality-checks-lambda.md).
 - Glue-specific adapters (Spark session setup, catalog helpers).
 
 ## Connections
 
 ### Consumers
-- [[ingestion-lambdas]]
-- [[quality-checks-lambda]]
-- [[curated-etl-glue]]
+- [dl-ingestion-lambdas](dl-ingestion-lambdas.md)
+- [dl-quality-checks-lambda](dl-quality-checks-lambda.md)
+- [curated-etl-glue](curated-etl-glue.md)
 
 ### Depends on
-- [[data-events]] - event schemas
+- [data-lib-events](data-lib-events.md) - event schemas
 - Third-party: `boto3`, `great-expectations`, `pydantic`, `structlog`
 
 ## Events / APIs
 
 ### Public modules
 - `data_platform.logging`
-- `data_platform.events` (wraps [[data-events]])
+- `data_platform.events` (wraps [data-lib-events](data-lib-events.md))
 - `data_platform.s3`
 - `data_platform.secrets`
 - `data_platform.retry`
@@ -46,31 +46,31 @@ Shared Python library used by every data-engineering Python runtime in the team:
 
 This library is used **inside** AWS runtimes. It does not own AWS resources itself, but it interacts with:
 
-- EventBridge buses defined in [[datalake-cfn]]
+- EventBridge buses defined in [datalake-cfn](datalake-cfn.md)
 - Secrets Manager secrets defined per-consumer
-- S3 buckets owned by [[datalake-cfn]]
+- S3 buckets owned by [datalake-cfn](datalake-cfn.md)
 
 ## Known gotchas
 
 - Glue bundles an older `boto3`. The `data_platform.s3` module works around two specific incompatibilities - look at the tests before pinning a newer `boto3`.
-- `data_platform.retry` defaults to exponential backoff with jitter. It is **not** idempotency-aware - see [[idempotency]].
+- `data_platform.retry` defaults to exponential backoff with jitter. It is **not** idempotency-aware; callers must still use deterministic keys and safe side effects.
 - Lambdas import `data_platform` at module scope. Adding heavy imports to `__init__.py` will hurt every Lambda cold start in the fleet.
 - The `data_platform.quality` wrapper caches the Great Expectations context per process. In Glue this is fine; in long-lived processes, reload manually after config changes.
 
 ## Related docs
 
-- Standards: [[python-services]], [[aws-lambda]], [[observability]], [[event-contracts]]
-- Concepts: [[idempotency]]
-- Schema source: [[data-events]]
+- Standards: [python-services](../standards/python-services.md), [aws-lambda](../standards/aws-lambda.md), logging/metrics expectations, [event-contracts](../standards/event-contracts.md)
+- Schema source: [data-lib-events](data-lib-events.md)
+- Flows: [vendor-onboarding-flow](../flows/vendor-onboarding-flow.md), [quality-rejection-flow](../flows/quality-rejection-flow.md)
 
 ## Claude routing
 
 1. This page
-2. [[shared-libraries]]
-3. [[event-contracts]] (if changing the events module)
+2. [dependency-map](../dependency-map.md)
+3. [event-contracts](../standards/event-contracts.md) (if changing the events module)
 
 If the change is a breaking API change, also read:
-- [[dependency-map]]
+- [dependency-map](../dependency-map.md)
 - Every consumer's page (to plan the rollout)
 
 ## Change risk

@@ -12,10 +12,10 @@ Steps:
 1. Read the staging file. Do not modify it.
 2. Create `atlas/repos/<repo-name>.md` from the working template `atlas/repos/_example-service.md`. Use `atlas/repos/_page-template.md` as the section checklist. Fill in every section from the staging file. Leave no placeholder fields unfilled — use `TBD` only if the staging file genuinely omits the information.
 3. Update these atlas pages in place:
-    - `atlas/repo-map/repo-catalog.md` — add new repo row
-    - `atlas/repo-map/dependency-map.md` — add upstream and downstream connections
-    - `atlas/repo-map/shared-libraries.md` — add to consumers table if the staging file lists shared libraries
-    - `atlas/repo-map/aws-resources.md` — add AWS resources if listed
+    - `atlas/repo-catalog.md` — add new repo row
+    - `atlas/dependency-map.md` — add upstream and downstream connections
+    - `atlas/dependency-map.md` — add to consumers table if the staging file lists shared libraries
+    - `repo page AWS context sections` — add AWS resources if listed
     - `atlas/repo-map/ownership.md` — add team ownership entry
 4. Append an `ingest` entry to `log.md`: today's date, new repo name, bullet list of pages created or updated.
 5. Output a one-line reminder for the developer: update `Repo page: atlas/repos/<repo-name>.md — not yet compiled` to `Repo page: atlas/repos/<repo-name>.md` in their local `CLAUDE.md`.

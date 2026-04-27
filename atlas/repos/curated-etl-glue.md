@@ -21,16 +21,16 @@ PySpark Glue jobs that transform validated raw data into the **curated zone** of
 ## Connections
 
 ### Upstream
-- [[quality-checks-lambda]] — emits `data.quality.validated`
+- [dl-quality-checks-lambda](dl-quality-checks-lambda.md) — emits `data.quality.validated`
 
 ### Downstream
-- [[analytics-api]] — reads curated tables
-- [[lineage-service]] — consumes `data.curated.published`
+- [analytics-api](analytics-api.md) — reads curated tables
+- [lineage-service](lineage-service.md) — consumes `data.curated.published`
 - Downstream BI / analyst tooling (Athena, QuickSight) — not repos
 
 ### Shared libraries
-- [[data-platform-pylib]] — imported into Glue jobs via the Glue `--additional-python-modules` path; see the repo's `Makefile` for the upload step
-- [[data-events]]
+- [data-lib-platform-pylib](data-lib-platform-pylib.md) — imported into Glue jobs via the Glue `--additional-python-modules` path; see the repo's `Makefile` for the upload step
+- [data-lib-events](data-lib-events.md)
 
 ## Events / APIs
 
@@ -52,21 +52,20 @@ PySpark Glue jobs that transform validated raw data into the **curated zone** of
   - `glue-job-failures` per domain
   - `glue-job-runtime-exceeded` per domain
 
-Cross-reference: [[aws-resources]].
+Cross-reference: `AWS context`.
 
 ## Known gotchas
 
 - Glue job parameters are merged at runtime from (workflow default args) + (trigger args) + (job-level args). Order matters; a workflow override wins over a job-level default.
-- Uploading a new `data-platform-pylib` wheel requires re-uploading for each Glue job's `--additional-python-modules` — no automatic propagation.
+- Uploading a new `data-lib-platform-pylib` wheel requires re-uploading for each Glue job's `--additional-python-modules` — no automatic propagation.
 - Job bookmarks misbehave on S3 partitions added out of order (late-arriving `ingest_date` partitions). Bookmark reset is the standard workaround.
 - Spark schema inference on the raw zone is dangerous — always pull the schema from the Glue Data Catalog or an explicit StructType.
 
 ## Related docs
 
-- Flows: [[raw-to-curated-flow]]
-- Standards: [[python-services]], [[event-contracts]], [[aws-testing]]
-- Infra: [[datalake-cfn]]
-- Concepts: [[idempotency]]
+- Flows: [raw-to-curated-flow](../flows/raw-to-curated-flow.md), [dataset-query-flow](../flows/dataset-query-flow.md), [event-schema-rollout-flow](../flows/event-schema-rollout-flow.md)
+- Standards: [python-services](../standards/python-services.md), [event-contracts](../standards/event-contracts.md), [aws-testing](../standards/aws-testing.md)
+- Infra: [datalake-cfn](datalake-cfn.md)
 
 ## Claude routing
 
@@ -74,8 +73,8 @@ The local `CLAUDE.md` type template (`glue-job`) covers mandatory pre-task reads
 
 If changing `data.curated.published` schema or output event:
 - atlas/standards/event-contracts.md
-- atlas/repo-map/dependency-map.md
-- atlas/repos/data-events.md
+- atlas/dependency-map.md
+- atlas/repos/data-lib-events.md
 
 If changing catalog schema or curated table structure:
 - atlas/repos/datalake-cfn.md
@@ -85,4 +84,4 @@ If changing catalog schema or curated table structure:
 
 - Local: unit tests run against small fixture Parquet files (`uv run pytest`); integration tests run the job in Glue `dev` via `make run-dev JOB=<name>`.
 - Pre-merge: run the job in `dev` with a synthetic `data.quality.validated` event, confirm curated output and `data.curated.published`.
-- Post-merge: watch Glue job runs and alarm dashboard per [[aws-testing]].
+- Post-merge: watch Glue job runs and alarm dashboard per [aws-testing](../standards/aws-testing.md).

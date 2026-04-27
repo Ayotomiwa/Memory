@@ -15,7 +15,7 @@ Java HTTP service exposing curated data for downstream product and analytics con
 - Expose curated datasets over HTTP (`/datasets/{name}/query`) and Parquet (`/datasets/{name}/export`).
 - Translate public query DSL into Athena SQL.
 - Enforce per-tenant data access rules.
-- Call [[lineage-service]] to annotate responses with provenance.
+- Call [lineage-service](lineage-service.md) to annotate responses with provenance.
 
 ## Connections
 
@@ -24,12 +24,12 @@ Java HTTP service exposing curated data for downstream product and analytics con
 - Analyst tooling
 
 ### Downstream
-- [[curated-etl-glue]] — indirectly, via reading curated tables
-- [[lineage-service]] — called for provenance metadata
+- [curated-etl-glue](curated-etl-glue.md) — indirectly, via reading curated tables
+- [lineage-service](lineage-service.md) — called for provenance metadata
 - AWS Athena (managed service)
 
 ### Shared libraries
-- Shared Java observability library
+- Shared Java logging/metrics library
 
 ## Events / APIs
 
@@ -46,26 +46,26 @@ Java HTTP service exposing curated data for downstream product and analytics con
 ## AWS context
 
 - **Compute**: ECS Fargate service
-- **IAM**: read-only role into [[datalake-cfn]] catalog + curated bucket
+- **IAM**: read-only role into [datalake-cfn](datalake-cfn.md) catalog + curated bucket
 - **Stack**: `analytics-api-<env>`
 - **Alarms**:
   - `analytics-api-5xx`
   - `athena-query-failures`
   - `cache-miss-rate-high`
 
-Cross-reference: [[aws-resources]].
+Cross-reference: `AWS context`.
 
 ## Known gotchas
 
 - Athena concurrency limits are per-workgroup. The service uses its own workgroup so it does not compete with ad-hoc analyst queries.
-- Curated table schema changes can break query validation mid-request. Always coordinate with [[curated-etl-glue]] on breaking schema changes.
+- Curated table schema changes can break query validation mid-request. Always coordinate with [curated-etl-glue](curated-etl-glue.md) on breaking schema changes.
 - Access rules are cached aggressively. Invalidation is event-driven; an access-rule change that isn't accompanied by the invalidation event will appear "stuck" in production.
 
 ## Related docs
 
-- Flows: [[raw-to-curated-flow]]
-- Standards: [[java-services]], [[observability]]
-- Upstream data: [[curated-etl-glue]], [[lineage-service]]
+- Flows: [raw-to-curated-flow](../flows/raw-to-curated-flow.md), [dataset-query-flow](../flows/dataset-query-flow.md)
+- Standards: [java-services](../standards/java-services.md), logging/metrics expectations
+- Upstream data: [curated-etl-glue](curated-etl-glue.md), [lineage-service](lineage-service.md)
 
 ## Claude routing
 

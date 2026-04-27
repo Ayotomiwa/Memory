@@ -17,17 +17,16 @@ When does it stop receiving changes / go offline?
 - Migration notes: <what consumers need to do, if anything>
 
 ## Consumers that need to migrate
-List repos from [[dependency-map]] that depend on this repo and will be affected.
+List repos from [dependency-map](../../atlas/dependency-map.md) that depend on this repo and will be affected.
 
 - [ ] <repo> — what they need to change
 - [ ] <repo> — what they need to change
 
 ## Atlas pages to update
-- [ ] [[repo-catalog]] — mark as deprecated
-- [ ] [[dependency-map]] — remove or update edges
-- [ ] [[shared-libraries]] — if applicable
-- [ ] [[aws-resources]] — if applicable
-- [ ] [[ownership]] — if applicable
+- [ ] [repo-catalog](../../atlas/repo-catalog.md) — mark as deprecated
+- [ ] [dependency-map](../../atlas/dependency-map.md) — remove or update edges
+- [ ] Repo ownership and AWS context removed or updated on the repo page
+- [ ] Shared-library edges removed or updated in [dependency-map](../../atlas/dependency-map.md), if applicable
 - [ ] Any flow pages that include this repo
 
 ## Known risks

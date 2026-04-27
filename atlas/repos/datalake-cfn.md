@@ -2,7 +2,7 @@
 
 ## Summary
 
-CloudFormation templates that own the shared AWS infrastructure of the data platform: S3 buckets, KMS keys, IAM roles, the EventBridge bus for data events, Glue Data Catalog databases, and the scheduler/webhook routes that trigger [[ingestion-lambdas]].
+CloudFormation templates that own the shared AWS infrastructure of the data platform: S3 buckets, KMS keys, IAM roles, the EventBridge bus for data events, Glue Data Catalog databases, and the scheduler/webhook routes that trigger [dl-ingestion-lambdas](dl-ingestion-lambdas.md).
 
 This repo owns the **shared substrate**. Individual service repos own their own stacks that reference resources exported here.
 
@@ -15,7 +15,7 @@ This repo owns the **shared substrate**. Individual service repos own their own 
 ## Responsibilities
 
 - Define and deploy shared S3 buckets: `raw-zone-<env>`, `curated-zone-<env>`, `ingestion-quarantine-<env>`, `glue-scripts-<env>`.
-- Define and deploy the `data-events-bus` EventBridge bus and core rules.
+- Define and deploy the `data-lib-events-bus` EventBridge bus and core rules.
 - Define Glue Data Catalog databases per domain and environment.
 - Own the shared IAM roles used by Lambdas and Glue jobs to access the lake.
 - Own KMS keys for at-rest encryption.
@@ -24,11 +24,11 @@ This repo owns the **shared substrate**. Individual service repos own their own 
 ## Connections
 
 ### Consumers (stacks that import from this one)
-- [[ingestion-lambdas]] — imports bus, raw bucket, quarantine bucket, ingestion role
-- [[quality-checks-lambda]] — imports bus, raw bucket, quality role
-- [[curated-etl-glue]] — imports bus, raw + curated buckets, catalog database, Glue role
-- [[lineage-service]] — imports bus and read role
-- [[analytics-api]] — imports curated bucket, catalog database, read role
+- [dl-ingestion-lambdas](dl-ingestion-lambdas.md) — imports bus, raw bucket, quarantine bucket, ingestion role
+- [dl-quality-checks-lambda](dl-quality-checks-lambda.md) — imports bus, raw bucket, quality role
+- [curated-etl-glue](curated-etl-glue.md) — imports bus, raw + curated buckets, catalog database, Glue role
+- [lineage-service](lineage-service.md) — imports bus and read role
+- [analytics-api](analytics-api.md) — imports curated bucket, catalog database, read role
 
 ### Upstream (depends on)
 - The org networking stack (VPC, subnets) — owned outside the team
@@ -37,8 +37,8 @@ This repo owns the **shared substrate**. Individual service repos own their own 
 
 This repo does not publish or consume events itself, but it owns the infrastructure events flow through:
 
-- EventBridge bus: `data-events-bus-<env>`
-- EventBridge rules matching the [[data-events]] event schemas
+- EventBridge bus: `data-lib-events-bus-<env>`
+- EventBridge rules matching the [data-lib-events](data-lib-events.md) event schemas
 
 ## AWS context
 
@@ -52,7 +52,7 @@ This repo does not publish or consume events itself, but it owns the infrastruct
   - `IngestionLambdaRoleArn` / `QualityLambdaRoleArn` / `GlueJobRoleArn`
   - `GlueCatalogDatabase<Domain>Name`
 
-Cross-reference: [[aws-resources]].
+Cross-reference: `AWS context`.
 
 ## Known gotchas
 
@@ -63,19 +63,19 @@ Cross-reference: [[aws-resources]].
 
 ## Related docs
 
-- Standards: [[cloudformation]], [[aws-testing]]
-- Runbooks: [[cloudformation-rollback]]
-- Map: [[aws-resources]]
+- Standards: [cloudformation](../standards/cloudformation.md), [aws-testing](../standards/aws-testing.md)
+- Flows: [vendor-onboarding-flow](../flows/vendor-onboarding-flow.md), [dataset-query-flow](../flows/dataset-query-flow.md)
+- Map: `AWS context`
 
 ## Claude routing
 
 1. This page
-2. [[cloudformation]]
-3. [[aws-testing]]
-4. [[cloudformation-rollback]]
+2. [cloudformation](../standards/cloudformation.md)
+3. [aws-testing](../standards/aws-testing.md)
+4. For prod rollback, escalate to Run the Bank with stack name, environment, failed resource, last stack event, and MR/deploy identifier.
 
 If changing an export consumed by other stacks, also read:
-- [[dependency-map]]
+- [dependency-map](../dependency-map.md)
 - Every consumer page listed above
 - Rollout plan: stage the change across `dev` → `stage` → `prod`, and introduce new exports alongside old ones for one release cycle
 
@@ -86,5 +86,5 @@ If changing an export consumed by other stacks, also read:
   - Deploy to `dev`.
   - Run a small smoke of each consumer (one ingest, one quality check, one Glue job, one analytics query).
   - Confirm no stack is in drift.
-- Post-merge: see [[cloudformation]] and [[aws-testing]].
-- Rollback: see [[cloudformation-rollback]].
+- Post-merge: see [cloudformation](../standards/cloudformation.md) and [aws-testing](../standards/aws-testing.md).
+- Prod rollback: escalate to Run the Bank.

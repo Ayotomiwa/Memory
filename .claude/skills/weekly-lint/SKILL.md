@@ -4,7 +4,7 @@ description: Run the weekly curated-layer maintenance pass - ingest staging file
 user-invocable: true
 ---
 
-Run the weekly curated-layer maintenance pass. Full process: onboarding/maintaining-the-atlas.md.
+Run the weekly curated-layer maintenance pass. Full process: atlas/onboarding/maintaining-the-atlas.md.
 
 Steps:
 1. Read `log.md`. Find the date of the last `lint` entry.
@@ -14,7 +14,7 @@ Steps:
 5. Scan `atlas/` for:
    - **Orphan pages** - pages not linked from index.md or any other atlas page.
    - **Outdated pages** - references to deprecated repos, removed services, or inactive standards.
-   - **Broken wikilinks** - `[[page-name]]` references where no matching file exists.
+   - **Broken wikilinks** - ``page-name`` references where no matching file exists.
 6. For each proposed skill file under `staging/skills/` that was modified since the last lint:
    a. Read the proposed skill instructions.
    b. Read all existing `.claude/skills/*/SKILL.md` files.

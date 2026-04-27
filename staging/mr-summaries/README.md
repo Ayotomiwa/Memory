@@ -47,4 +47,4 @@ Which pages this MR should update.
 - `atlas/repos/<repo>.md` — for repo-specific knowledge
 - `atlas/standards/*.md` — for reusable patterns
 - `atlas/decisions/*.md` — if the MR implements a decision
-- `atlas/repo-map/dependency-map.md` — for new cross-repo edges
+- `atlas/dependency-map.md` — for new cross-repo edges

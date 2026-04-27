@@ -2,7 +2,7 @@
 
 When a Lambda is erroring, timing out, or behaving weirdly.
 
-Related: [[aws-lambda]], [[aws-testing]], [[observability]], [[sqs-backlog-debugging]]
+Related: [aws-lambda](../standards/aws-lambda.md), [aws-testing](../standards/aws-testing.md), logging/metrics expectations, [sqs-backlog-debugging](sqs-backlog-debugging.md)
 
 ## Symptoms this covers
 
@@ -13,9 +13,9 @@ Related: [[aws-lambda]], [[aws-testing]], [[observability]], [[sqs-backlog-debug
 
 ## Step 1 — Identify the Lambda and its context
 
-- Which repo? Check [[repo-catalog]] or the alarm description.
+- Which repo? Check [repo-catalog](../repo-catalog.md) or the alarm description.
 - What does it do? Read `atlas/repos/<repo>.md`, especially "AWS context" and "Known gotchas".
-- What event or flow triggered it? Cross-reference the relevant flow page ([[raw-to-curated-flow]]).
+- What event or flow triggered it? Cross-reference the relevant flow page ([raw-to-curated-flow](../flows/raw-to-curated-flow.md)).
 
 ## Step 2 — CloudWatch logs
 
@@ -27,7 +27,7 @@ Related: [[aws-lambda]], [[aws-testing]], [[observability]], [[sqs-backlog-debug
 ## Step 3 — Lambda metrics
 
 - `Errors` rate vs. `Invocations` rate. 100% errors → deployment or config; intermittent → data or downstream.
-- `Duration p95/p99` vs. configured timeout. Close to timeout? See [[aws-lambda]] on timeout tuning.
+- `Duration p95/p99` vs. configured timeout. Close to timeout? See [aws-lambda](../standards/aws-lambda.md) on timeout tuning.
 - `Throttles` > 0 → reserved concurrency or regional quota; escalate.
 - `IteratorAge` (for stream sources) → consumer falling behind.
 
@@ -38,18 +38,18 @@ Related: [[aws-lambda]], [[aws-testing]], [[observability]], [[sqs-backlog-debug
 
 ## Step 5 — Upstream
 
-- Did an upstream repo change recently? Check [[dependency-map]] for the producer.
-- Did an event schema change? Check [[data-events]] and [[event-contracts]].
-- Did the infrastructure change? Check recent MRs on [[datalake-cfn]].
+- Did an upstream repo change recently? Check [dependency-map](../dependency-map.md) for the producer.
+- Did an event schema change? Check [data-lib-events](../repos/data-lib-events.md) and [event-contracts](../standards/event-contracts.md).
+- Did the infrastructure change? Check recent MRs on [datalake-cfn](../repos/datalake-cfn.md).
 
 ## Step 6 — Downstream
 
 - If the Lambda ran successfully but downstream is broken, switch to that Lambda's runbook.
-- Check if the Lambda writes to a queue with backing pressure — see [[sqs-backlog-debugging]].
+- Check if the Lambda writes to a queue with backing pressure — see [sqs-backlog-debugging](sqs-backlog-debugging.md).
 
 ## Step 7 — Decide
 
-- **Rollback** — if the current version is newly deployed and the error started with that deploy. See [[cloudformation-rollback]].
+- **Rollback** — if the current version is newly deployed and the error started with that deploy. For prod rollback, escalate to Run the Bank with the deploy identifier and failure evidence.
 - **Hotfix** — if the fix is small and the blast radius is known.
 - **Scale** — if it is a concurrency or timeout issue that a config change can address.
 - **Escalate** — if root cause is unclear after ~30 minutes.
@@ -65,5 +65,5 @@ Before closing the incident, write a short note to `staging/incidents/` or `stag
 
 ## Related repos
 
-- [[ingestion-lambdas]]
-- [[quality-checks-lambda]]
+- [dl-ingestion-lambdas](../repos/dl-ingestion-lambdas.md)
+- [dl-quality-checks-lambda](../repos/dl-quality-checks-lambda.md)

@@ -11,8 +11,8 @@ If the user did not describe the change, ask: what is changing — a shared libr
 State up front whether coverage is complete enough for a precise answer. If `usage-summaries.md` still contains `_not yet collected_` rows or candidate consumers are missing accessible local `CLAUDE.md` files, say that the result is partial and that unknown consumers stay in "Possibly affected."
 
 Steps:
-1. Read `atlas/repo-map/dependency-map.md` from the central context. Identify the candidate consumer set for the element being changed.
-2. Read `atlas/repo-map/usage-summaries.md` for a quick cross-reference of which consumers use what.
+1. Read `atlas/dependency-map.md` from the central context. Identify the candidate consumer set for the element being changed.
+2. Read `local CLAUDE.md Dependencies and usage sections` for a quick cross-reference of which consumers use what.
 3. Treat blank cells or `_not yet collected_` rows in `usage-summaries.md` as missing coverage, not as evidence that a consumer does not use the element.
 4. For each candidate consumer, check if a local `CLAUDE.md` with a `Dependencies and usage` section is accessible. If so, check whether the specific element being changed is listed.
 5. Report in three buckets:

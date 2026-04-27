@@ -35,13 +35,13 @@ What we are doing. One paragraph, assertive voice.
 
 ## Affected repos
 
-- [[<repo-name>]]
-- [[<repo-name>]]
+- `<repo-name>`
+- `<repo-name>`
 
 ## Affected flows / standards / concepts
 
-- [[<flow-name>]]
-- [[<standard-name>]]
+- `<flow-name>`
+- `<standard-name>`
 
 ## References
 
@@ -50,7 +50,7 @@ What we are doing. One paragraph, assertive voice.
 
 ---
 
-## Example — ADR-0001: Use a shared `data-events` library
+## Example — ADR-0001: Use a shared `data-lib-events` library
 
 > Filled-in example showing how a real ADR looks.
 
@@ -58,7 +58,7 @@ What we are doing. One paragraph, assertive voice.
 
 **Context:** Each producer defined its own event shape. Consumers copy-pasted types or parsed loosely, causing schema drift and a production incident where a producer added a required field and three consumers silently dropped the message.
 
-**Decision:** Create and maintain [[data-events]] as the sole source of event type definitions. Every producer and consumer imports types from this library; hand-rolled event JSON is a review-blocker.
+**Decision:** Create and maintain [data-lib-events](../repos/data-lib-events.md) as the sole source of event type definitions. Every producer and consumer imports types from this library; hand-rolled event JSON is a review-blocker.
 
 **Alternatives considered:**
 - Per-service schemas — what we had. Rejected: caused observed incidents.
@@ -67,4 +67,4 @@ What we are doing. One paragraph, assertive voice.
 
 **Consequences:** Single source of truth; Python and Java stay aligned. Trade-off: cross-team coordination on library releases.
 
-**Affected repos:** [[data-events]], [[ingestion-lambdas]], [[quality-checks-lambda]], [[curated-etl-glue]], [[lineage-service]]
+**Affected repos:** [data-lib-events](../repos/data-lib-events.md), [dl-ingestion-lambdas](../repos/dl-ingestion-lambdas.md), [dl-quality-checks-lambda](../repos/dl-quality-checks-lambda.md), [curated-etl-glue](../repos/curated-etl-glue.md), [lineage-service](../repos/lineage-service.md)

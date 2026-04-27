@@ -2,7 +2,7 @@
 
 Conventions for Java services owned by this team.
 
-Related: [[aws-lambda]], [[event-contracts]], [[observability]], [[aws-testing]]
+Related: [aws-lambda](aws-lambda.md), [event-contracts](event-contracts.md), [aws-testing](aws-testing.md)
 
 ## Build and test
 
@@ -21,23 +21,22 @@ Related: [[aws-lambda]], [[event-contracts]], [[observability]], [[aws-testing]]
 
 ## Events
 
-- Event schemas live in [[data-events]], never per-service.
+- Event schemas live in [data-lib-events](../repos/data-lib-events.md), never per-service.
 - Producers use the schema library types; do not hand-roll JSON.
 - Consumers validate with the schema library before acting.
-- Any event contract change must follow [[event-contracts]] rules.
+- Any event contract change must follow [event-contracts](event-contracts.md) rules.
 
-## Observability
+## Logging and metrics
 
-- Use the shared observability library.
+- Use the shared logging/metrics library.
 - Every request/message processed emits at minimum: `correlationId`, `messageId`, outcome, duration.
-- See [[observability]] for the full list.
 
 ## Testing
 
 - Unit tests cover business logic.
 - Integration tests hit a real local dependency when practical (DB, LocalStack, etc.).
 - Do **not** mock database layers in integration tests without a good reason — mock-vs-real divergence is a recurring source of incidents.
-- For AWS-touching services, see [[aws-testing]] for the expected runtime validation steps.
+- For AWS-touching services, see [aws-testing](aws-testing.md) for the expected runtime validation steps.
 
 ## Error handling
 
@@ -46,7 +45,7 @@ Related: [[aws-lambda]], [[event-contracts]], [[observability]], [[aws-testing]]
 
 ## Ownership
 
-- Every Java service has an owning team listed in [[ownership]].
+- Every Java service has an owning team listed in the repo page.
 - A repo without an owning team is a bug; flag it to the platform team.
 
 ## Starter sources

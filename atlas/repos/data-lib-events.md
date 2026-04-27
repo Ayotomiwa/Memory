@@ -1,4 +1,4 @@
-# data-events
+# data-lib-events
 
 ## Summary
 
@@ -8,25 +8,25 @@ Shared schema library for data-platform events (`data.raw.landed`, `data.quality
 
 - **Type**: Shared schema library (Python + Java)
 - **Language / tooling**: Python 3.11 / Java 21 / Pydantic + Jackson
-- **Repo URL**: `gitlab.company.internal/data/data-events`
+- **Repo URL**: `gitlab.company.internal/data/data-lib-events`
 
 ## Responsibilities
 
 - Define the canonical schema for each data-platform event.
 - Publish Python + Java artifacts, version-aligned, so producers and consumers stay in lockstep.
-- Enforce the compatibility rules in [[event-contracts]] in CI.
+- Enforce the compatibility rules in [event-contracts](../standards/event-contracts.md) in CI.
 
 ## Connections
 
 ### Producers
-- [[ingestion-lambdas]] — `data.raw.landed`
-- [[quality-checks-lambda]] — `data.quality.validated`, `data.quality.rejected`
-- [[curated-etl-glue]] — `data.curated.published`
+- [dl-ingestion-lambdas](dl-ingestion-lambdas.md) — `data.raw.landed`
+- [dl-quality-checks-lambda](dl-quality-checks-lambda.md) — `data.quality.validated`, `data.quality.rejected`
+- [curated-etl-glue](curated-etl-glue.md) — `data.curated.published`
 
 ### Consumers
-- [[quality-checks-lambda]]
-- [[curated-etl-glue]]
-- [[lineage-service]]
+- [dl-quality-checks-lambda](dl-quality-checks-lambda.md)
+- [curated-etl-glue](curated-etl-glue.md)
+- [lineage-service](lineage-service.md)
 
 ### Depends on
 - _(no runtime deps beyond Pydantic / Jackson)_
@@ -47,20 +47,21 @@ Shared schema library for data-platform events (`data.raw.landed`, `data.quality
 
 ## Related docs
 
-- Standards: [[event-contracts]], [[java-services]], [[python-services]]
-- Map: [[shared-libraries]], [[dependency-map]]
-- Concepts: [[idempotency]] (event IDs drive idempotency keys downstream)
+- Standards: [event-contracts](../standards/event-contracts.md), [java-services](../standards/java-services.md), [python-services](../standards/python-services.md)
+- Flows: [event-schema-rollout-flow](../flows/event-schema-rollout-flow.md)
+- Map: [dependency-map](../dependency-map.md)
+- Event IDs drive downstream idempotency keys.
 
 ## Claude routing
 
 1. This page
-2. [[event-contracts]]
-3. [[dependency-map]] (for impact analysis)
+2. [event-contracts](../standards/event-contracts.md)
+3. [dependency-map](../dependency-map.md) (for impact analysis)
 4. Each consumer's page if the change is breaking
 
 ## Change risk
 
-Treat every change as potentially cross-team. See the rollout procedure in [[event-contracts]].
+Treat every change as potentially cross-team. See the rollout procedure in [event-contracts](../standards/event-contracts.md).
 
 ## Validation expectations
 

@@ -39,5 +39,5 @@ Which atlas page(s) should this change? (e.g., `atlas/repos/<repo>.md` — add t
 Most repo findings land in:
 
 - `atlas/repos/<repo>.md` — under "Known gotchas" or "Key connections"
-- `atlas/repo-map/dependency-map.md` — if the finding reveals a new cross-repo edge
+- `atlas/dependency-map.md` — if the finding reveals a new cross-repo edge
 - `atlas/standards/*.md` — if the finding generalizes into a rule
